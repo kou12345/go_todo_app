@@ -20,6 +20,9 @@ func TestRun(t *testing.T) {
 	rsp, err := http.Get("http://localhost:18080/" + in)
 	if err != nil {
 		t.Errorf("failed to get: %+v", err)
+		// failed to get: Get "http://localhost:18080/message": dial tcp 127.0.0.1:18080: connect: connection refused
+		// panic: runtime error: invalid memory address or nil pointer dereference
+		// 解決策が分からない
 	}
 	defer rsp.Body.Close()
 	got, err := io.ReadAll(rsp.Body)
